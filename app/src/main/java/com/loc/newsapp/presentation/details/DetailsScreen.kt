@@ -31,7 +31,7 @@ import com.loc.newsapp.presentation.details.components.DetailsTopBar
 import com.loc.newsapp.ui.theme.NewsAppTheme
 
 @Composable
-fun DetailScreen(
+fun DetailsScreen(
     article: Article,
     event: (DetailsEvent) -> Unit,
     navigateUp: () -> Unit
@@ -63,7 +63,7 @@ fun DetailScreen(
 
                }
             },
-            onBookmarkClick = { event(DetailsEvent.SaveArticle) },
+            onBookmarkClick = { event(DetailsEvent.UpsertDeleteArticle(article)) },
             onBackClick = navigateUp
         )
 
@@ -111,7 +111,7 @@ fun DetailScreen(
 @Composable
 fun DetailsScreenPreview() {
     NewsAppTheme(dynamicColor = false) {
-        DetailScreen(
+        DetailsScreen(
             article = Article(
                 author = "",
                 title = "Coinbase says Apple blocked its last app release on NFTs in Wallet ... - CryptoSaurus",
