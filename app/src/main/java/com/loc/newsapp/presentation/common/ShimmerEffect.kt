@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -37,6 +39,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.loc.newsapp.R
 import com.loc.newsapp.presentation.Dimens
+import com.loc.newsapp.presentation.Dimens.ExtraSmallPadding2
+import com.loc.newsapp.presentation.Dimens.HeadlineCardSize
 import com.loc.newsapp.presentation.Dimens.MediumPadding1
 import com.loc.newsapp.ui.theme.NewsAppTheme
 
@@ -97,11 +101,46 @@ fun ArticleCardShimmerEffect(
     }
 }
 
+@Composable
+fun HeadlineCardShimmerEffect(
+    modifier: Modifier = Modifier
+) {
+    Row(modifier = modifier) {
+
+        Column(
+            verticalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier
+                .padding(horizontal = Dimens.ExtraSmallPadding)
+                .height(Dimens.HeadlineCardSize)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .size(Dimens.HeadlineImageHeight)
+                    .padding(horizontal = MediumPadding1)
+                    .shimmerEffect()
+            )
+
+            Spacer(modifier = Modifier.height(ExtraSmallPadding2))
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .padding(horizontal = MediumPadding1)
+                    .shimmerEffect()
+            )
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun ArticleCardShimmerEffectPreview() {
+fun HeadlineCardShimmerEffectPreview() {
     NewsAppTheme {
-        ArticleCardShimmerEffect()
+        Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
+            HeadlineCardShimmerEffect()
+        }
     }
 }

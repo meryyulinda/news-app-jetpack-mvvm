@@ -62,7 +62,7 @@ fun OnBoardingPage(
 fun OnBoardingPagePreview() {
     NewsAppTheme {
         OnBoardingPage(
-            page = pages[0]
+            page = pages[2]
         )
     }
 }

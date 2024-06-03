@@ -9,7 +9,7 @@ interface NewsApi {
 
     @GET("everything")
     suspend fun getNews(
-        @Query("page") page: Int,
+        @Query("page") page: Int = 2,
         @Query("sources") sources: String,
         @Query("apiKey") apiKey: String = API_KEY
     ): NewsReponse
@@ -18,6 +18,15 @@ interface NewsApi {
     suspend fun searchNews(
         @Query("q") searchQuery: String,
         @Query("page") page: Int,
+        @Query("sources") sources: String,
+        @Query("apiKey") apiKey: String = API_KEY
+    ): NewsReponse
+
+//    @GET("top-headlines")
+    @GET("everything")
+    suspend fun getHeadlines(
+        @Query("pageSize") pageSize: Int = 5,
+        @Query("page") page: Int = 1,
         @Query("sources") sources: String,
         @Query("apiKey") apiKey: String = API_KEY
     ): NewsReponse

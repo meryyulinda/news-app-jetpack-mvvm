@@ -10,6 +10,9 @@ object Dimens {
 
     val PageIndicatorWidth = 52.dp
 
+    val HeadlineCardSize = 200.dp
+    val HeadlineImageHeight = 150.dp
+
     val ArticleCardSize = 96.dp
 
     val ExtraSmallPadding = 3.dp

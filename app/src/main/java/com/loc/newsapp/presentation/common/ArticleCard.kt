@@ -55,6 +55,7 @@ fun ArticleCard(
             contentScale = ContentScale.Crop
         )
 
+        Spacer(modifier = Modifier.width(ExtraSmallPadding2))
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
@@ -73,7 +74,9 @@ fun ArticleCard(
                 Text(
                     text = article.source.name,
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                    color = colorResource(id = R.color.body)
+                    color = colorResource(id = R.color.body),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                 Icon(
@@ -86,7 +89,9 @@ fun ArticleCard(
                 Text(
                     text = article.publishedAt,
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
-                    color = colorResource(id = R.color.body)
+                    color = colorResource(id = R.color.body),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

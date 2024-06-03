@@ -1,9 +1,11 @@
 package com.loc.newsapp.data.repository
 
+import androidx.compose.foundation.pager.HorizontalPager
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.loc.newsapp.data.local.NewsDao
+import com.loc.newsapp.data.remote.HeadlineNewsPagingSource
 import com.loc.newsapp.data.remote.NewsApi
 import com.loc.newsapp.data.remote.NewsPagingSource
 import com.loc.newsapp.data.remote.SearchNewsPagingSource
@@ -22,6 +24,18 @@ class NewsRepositoryImpl(
             config = PagingConfig(pageSize = 10),
             pagingSourceFactory = {
                 NewsPagingSource(
+                    newsApi = newsApi,
+                    sources = sources.joinToString(separator = ",")
+                )
+            }
+        ).flow
+    }
+
+    override fun getHeadlines(sources: List<String>): Flow<PagingData<Article>> {
+        return Pager(
+            config = PagingConfig(pageSize = 5),
+            pagingSourceFactory = {
+                HeadlineNewsPagingSource(
                     newsApi = newsApi,
                     sources = sources.joinToString(separator = ",")
                 )
